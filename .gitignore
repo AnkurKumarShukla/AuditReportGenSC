@@ -1,0 +1,12 @@
+.serverless
+node_modules
+.env
+python
+deployment_strp.txt
+python-layer.zip
+pythonlayer.zip
+venv_activation.txt
+__pycache__
+aud11_venv
+
+

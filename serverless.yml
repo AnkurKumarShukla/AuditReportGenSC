@@ -1,0 +1,38 @@
+service: sc-auditor-backend
+package:
+  individually: true
+provider:
+  name: aws
+  runtime: python3.11
+  region: eu-central-1
+  httpApi:
+    cors: true
+  timeout: 30
+  stage: production
+  memorySize: 512
+  environment: 
+    Auth: <<openaicode>>  # Replace this with your actual API key
+
+plugins:
+  - serverless-offline
+
+functions:
+  app:
+    package:
+      patterns:
+        - "!aud11_venv/**"
+        - "!node_modules/**"
+        - "!.env"
+        - "!__pycache__/**"
+        - "!venv_activation/**"
+        - "!python/**"
+        - "!python-layer.zip"
+        - "!pythonlayer.zip"
+    handler: handler.handler
+    layers:
+      - arn:aws:lambda:eu-central-1:954976311993:layer:pythonlayerdocker:1  # Replace with your actual layer ARN
+    events:
+      - http:
+          method: any
+          path: /{proxy+}
+          cors: true
