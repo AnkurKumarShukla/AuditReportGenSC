@@ -30,7 +30,7 @@ functions:
         - "!pythonlayer.zip"
     handler: handler.handler
     layers:
-      - arn:aws:lambda:eu-central-1:954976311993:layer:pythonlayerdocker:1  # Replace with your actual layer ARN
+      - arn:aws:lambda:eu-central-1:954********:layer:pyth***********er:* # Replace with your actual layer ARN
     events:
       - http:
           method: any
